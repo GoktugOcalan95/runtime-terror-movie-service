@@ -1,0 +1,4 @@
+{
+  "mongoDBConnectURI": "mongodb+srv://admin:qwe123@cluster0-a4z5w.mongodb.net/movie_db?retryWrites=true&w=majority",
+  "jwtsecret": "THIS IS A SECRET STRING USED TO SIGN AND VERIFY JWT TOKENS MEAN STACK DEV 2020"
+}
