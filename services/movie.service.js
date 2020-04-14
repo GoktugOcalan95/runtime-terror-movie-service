@@ -1,6 +1,5 @@
 ﻿const Movie = require('../models/movie.model.js');
-
-
+const Professional = require('../models/MoviePofessional');
 
 async function create(movieParam) {
     const movie = new Movie(movieParam);
@@ -44,6 +43,11 @@ async function findByProfessional(id){
     return movies.filter(m => m.professionals.find(a => a._id == id) != undefined)
 }
 
+async function findByProfessionalName(name){
+    let pros = await Professional.find()
+    return pros.filter(a => a.name.indexOf(name)!=-1)
+}
+
 module.exports = {
     create,
     getAll,
@@ -53,5 +57,6 @@ module.exports = {
     findByRating,
     findByProfessional,
     update,
-    delete: _delete
+    delete: _delete,
+    findByProfessionalName:findByProfessionalName
 };

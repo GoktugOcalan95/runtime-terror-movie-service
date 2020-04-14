@@ -6,6 +6,7 @@ router.get('/list', getAll);
 router.get('/findByYear/:year', findByYear);
 router.get('/findByName/:name', findByName);
 router.get('/findByProfessional/:id', findByProfessional);
+router.get('/findByProfessionalName/:name', findByProfessionalName);
 router.get('/findByRating/:rating', findByRating);
 
 module.exports = router;
@@ -17,8 +18,6 @@ function getAll(req, res, next) {
 }
 
 function findByYear(req, res, next) {
-    let year = req.params.year
-
     movieService.findByYear(req.params.year)
         .then(movies => res.json(movies))
         .catch(err => next(err));
@@ -32,6 +31,13 @@ function findByName(req, res, next) {
 
 function findByProfessional(req, res, next) {
     movieService.findByProfessional(req.params.id)
+        .then(movies => res.json(movies))
+        .catch(err => next(err));
+}
+
+function findByProfessionalName(req, res, next) {
+    // console.log(req.params.name)
+    movieService.findByProfessionalName(req.params.name)
         .then(movies => res.json(movies))
         .catch(err => next(err));
 }
