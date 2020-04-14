@@ -12,7 +12,8 @@ function jwt() {
             '/api/users/authenticate',
             '/api/users/register',
             '/api/movies/list',
-            '/api/lp'
+            '/api/professionals/list',
+            { url: /^\/api\/movies\/.*/, methods: ['GET'] },
         ]
     });
 }
@@ -31,12 +32,15 @@ async function isRevoked(req, payload, done) {
     }
 
     //admin only routes
-    switch(req.url){
-        case '/api/users/list':
-            if(user.role != 'admin'){
-                return done(unauthorizedError, true);
-            }
-            break;
+    if (req.url === '/api/users/list'){
+        if(user.role != 'admin'){
+            return done(unauthorizedError, true);
+        }
+    }
+    else if (/^\/api\/movies\/.*/.test(req.url)){
+        if(req.method != "GET" && user.role != 'admin'){
+            return done(unauthorizedError, true);
+        }
     }
 
     done();

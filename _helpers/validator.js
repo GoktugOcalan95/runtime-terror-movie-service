@@ -23,7 +23,7 @@ const movieCreateRules = () => {
         body('title').not().isEmpty().withMessage('cannot be empty'),
         body('description').not().isEmpty().withMessage('cannot be empty'),
         body('runtime').not().isEmpty().withMessage('cannot be empty'),
-        body('releaseDate').not().isEmpty().withMessage('cannot be empty')
+        body('releaseYear').not().isEmpty().withMessage('cannot be empty')
     ]
 }
 

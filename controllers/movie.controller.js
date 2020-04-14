@@ -4,10 +4,10 @@ const movieService = require('../services/movie.service');
 const {movieCreateRules, validate} = require('../_helpers/validator');
 
 // routes
-router.post('/create', movieCreateRules(), validate, create);
+router.post('/', movieCreateRules(), validate, create);
 router.get('/list', getAll);
 router.get('/:id', getById);
-router.put('/:id', update);
+router.put('/:id', movieCreateRules(), validate, update);
 router.delete('/:id', _delete);
 
 module.exports = router;

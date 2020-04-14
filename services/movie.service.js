@@ -27,8 +27,8 @@ async function _delete(id) {
 }
 
 async function findByYear(year){
-    let movies = await Movie.find()
-    return movies.filter(m => m.releaseDate.getFullYear() == year)
+    let movies = await Movie.find();
+    return movies.filter(m => m.releaseYear == year)
 }
 async function findByName(title){
     let movies = await Movie.find()
